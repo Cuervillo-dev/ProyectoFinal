@@ -16,7 +16,6 @@ namespace Restaurante
         public BebidasNaturales()
         {
             InitializeComponent();
-            crearBotonManual();
             cacao.ValueChanged += cacao_ValueChanged;
             limonada.ValueChanged += limonada_ValueChanged;
             fresa.ValueChanged += fresa_ValueChanged;
@@ -24,26 +23,7 @@ namespace Restaurante
 
         }
 
-        public void crearBotonManual()
-        {
-            btnVolverN = new Button();
-            btnVolverN.Name = "btnVolverN";
-            btnVolverN.Text = "Volver Al Menu";
-            btnVolverN.Size = new System.Drawing.Size(120, 40);
-            btnVolverN.Location = new System.Drawing.Point(50, 200); // Coordenadas (X, Y)
-
-            
-            btnvolverN.Click += new System.EventHandler(this.btnVolverN_Click);
-
-           
-            this.Controls.Add(btnVolverN);
-
-        }
-        private void bntVolverN_click (object sender, EventArgs e)
-        {
-            navegacion.menuPrincipal(this);
-        }
-
+      
         private void cacao_ValueChanged(object sender, EventArgs e)
         {
             decimal precio = 50;
@@ -69,6 +49,7 @@ namespace Restaurante
         
         }
 
+        
         private void btnVolveralMenuN_Click(object sender, EventArgs e)
         {
             formCliente formClientes = new formCliente();
@@ -78,7 +59,81 @@ namespace Restaurante
 
         private void btnTotalN_Click(object sender, EventArgs e)
         {
+            if(cacao.Value > 0)
+            {
+                pedido.Items.add(new ItemPedido 
+                {
+                    Nombre = "Cacao",
+                    Categoria = "Bebida",
+                    Precio = 50m,
+                    Cantidad = (int)cacao.Value
+
+                });
+
+
+            }
+
+            if(limonada.Value > 0)
+            {
+                pedido.Items.add(new ItemPedido 
+                {
+                    Nombre = "Limonada",
+                    Categoria = "Bebida",
+                    Precio = 35m,
+                    Cantidad = (int)limonada.Value
+
+                });
+
+
+            }
+
+            if(fresa.Value > 0)
+            {
+                pedido.Items.add(new ItemPedido 
+                {
+                    Nombre = "Fresa",
+                    Categoria = "Bebida",
+                    Precio = 45m,
+                    Cantidad = (int)fresa.Value
+
+                });
+
+
+            }
+
+            if(te.Value > 0)
+            {
+                pedido.Items.add(new ItemPedido 
+                {
+                    Nombre = "Te Elado",
+                    Categoria = "Bebida",
+                    Precio = 45m,
+                    Cantidad = (int)te.Value
+
+                });
+
+
+            }
+
+            labatotsl.Text =(cacao_Value + limonada.Value + fresa.Value  );
+           
+            MessageBox.Show("Bebidas agregadas al pedido ");
+            
+
+            toña.Value = 0;
+            victoria.Value = 0;
+            corona.Value = 0;
+
+            
+                
+
+
+
+
 
         }
+
+       
+       
     }
 }
