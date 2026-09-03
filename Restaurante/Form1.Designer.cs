@@ -28,29 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btoCliente = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(-4, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(456, 483);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // btoCliente
             // 
-            this.btoCliente.BackColor = System.Drawing.SystemColors.Control;
-            this.btoCliente.Location = new System.Drawing.Point(95, 37);
+            this.btoCliente.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btoCliente.ForeColor = System.Drawing.Color.Peru;
+            this.btoCliente.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btoCliente.Location = new System.Drawing.Point(316, 513);
+            this.btoCliente.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btoCliente.Name = "btoCliente";
-            this.btoCliente.Size = new System.Drawing.Size(263, 47);
+            this.btoCliente.Size = new System.Drawing.Size(265, 59);
             this.btoCliente.TabIndex = 1;
             this.btoCliente.Text = "Menu";
             this.btoCliente.UseVisualStyleBackColor = false;
@@ -58,21 +49,21 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 478);
+            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.BackgroundImage = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_09_07_PM;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(893, 598);
             this.Controls.Add(this.btoCliente);
-            this.Controls.Add(this.pictureBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btoCliente;
     }

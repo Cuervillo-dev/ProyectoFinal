@@ -106,5 +106,21 @@ namespace Restaurante
         corona.Value = 0;
         }
 
+        private void labcorona_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCalcularTotal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVolveralMenu_Click(object sender, EventArgs e)
+        {
+            formCliente formClientes = new formCliente();
+            formClientes.Show();
+            this.Hide();
+        }
     }
 }

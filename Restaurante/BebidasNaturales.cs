@@ -68,5 +68,17 @@ namespace Restaurante
             labte.Text = (precio * te.Value).ToString("C");
         
         }
+
+        private void btnVolveralMenuN_Click(object sender, EventArgs e)
+        {
+            formCliente formClientes = new formCliente();
+            formClientes.Show();
+            this.Hide();
+        }
+
+        private void btnTotalN_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

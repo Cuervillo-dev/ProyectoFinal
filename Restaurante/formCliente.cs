@@ -39,8 +39,8 @@ namespace Restaurante
         private void bebidasAlcoholicasToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            BebidasNaturales natural = new BebidasNaturales();
-            natural.Show();
+            BebidasAlcoholicas alcoholicas = new BebidasAlcoholicas();
+            alcoholicas.Show();
             this.Hide();
         }
 

@@ -57,5 +57,26 @@ namespace Restaurante
             labalitaPapaAsada.Text = (precio * alitaPapaAsada.Value). ToString ("c");
         }
 
+        private void labalitaPeque_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labalitasArroz_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVolveralMenuE_Click(object sender, EventArgs e)
+        {
+            formCliente formClientes = new formCliente();
+            formClientes.Show();
+            this.Hide();
+        }
+
+        private void btnTotalE_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
