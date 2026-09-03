@@ -16,9 +16,32 @@ namespace Restaurante
         public BebidasAlcoholicas()
         {
             InitializeComponent();
+            crearBotonManual();
            toña.ValueChanged += toña_ValueChanged;
            victoria.ValueChanged += victoria_ValueChanged;
            corona.ValueChanged += corona_ValueChanged;
+            
+        }
+
+        public void crearBotonManual()
+        {
+            btnVolver = new Button();
+            btnVolver.Name = "btnVolver";
+            btnVolver.Text = "Volver Al Menu";
+            btnVolver.Size = new System.Drawing.Size(120, 40);
+            btnVolver.Location = new System.Drawing.Point(50, 200); // Coordenadas (X, Y)
+
+            
+            btnvolver.Click += new System.EventHandler(this.btnVolver_Click);
+
+           
+            this.Controls.Add(btnVolver);
+
+        }
+
+        private void btnVolver_click (object sender, EventArgs m)
+        {
+            navegacion.menuPrincipal(this);
             
         }
 

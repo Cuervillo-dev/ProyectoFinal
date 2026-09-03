@@ -16,11 +16,32 @@ namespace Restaurante
         public BebidasNaturales()
         {
             InitializeComponent();
+            crearBotonManual();
             cacao.ValueChanged += cacao_ValueChanged;
             limonada.ValueChanged += limonada_ValueChanged;
             fresa.ValueChanged += fresa_ValueChanged;
             te.ValueChanged += te_ValueChanged;
 
+        }
+
+        public void crearBotonManual()
+        {
+            btnVolverN = new Button();
+            btnVolverN.Name = "btnVolverN";
+            btnVolverN.Text = "Volver Al Menu";
+            btnVolverN.Size = new System.Drawing.Size(120, 40);
+            btnVolverN.Location = new System.Drawing.Point(50, 200); // Coordenadas (X, Y)
+
+            
+            btnvolverN.Click += new System.EventHandler(this.btnVolverN_Click);
+
+           
+            this.Controls.Add(btnVolverN);
+
+        }
+        private void bntVolverN_click (object sender, EventArgs e)
+        {
+            navegacion.menuPrincipal(this);
         }
 
         private void cacao_ValueChanged(object sender, EventArgs e)
