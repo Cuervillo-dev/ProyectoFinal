@@ -1,10 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,36 +19,29 @@ namespace Restaurante
             limonada.ValueChanged += limonada_ValueChanged;
             fresa.ValueChanged += fresa_ValueChanged;
             te.ValueChanged += te_ValueChanged;
-
         }
 
-      
         private void cacao_ValueChanged(object sender, EventArgs e)
         {
             decimal precio = 50;
             labcacao.Text = (precio * cacao.Value).ToString("C");
-        
         }
-         private void limonada_ValueChanged(object sender, EventArgs e)
+        private void limonada_ValueChanged(object sender, EventArgs e)
         {
             decimal precio = 35;
             lablimonada.Text = (precio * limonada.Value).ToString("C");
-        
         }
-         private void fresa_ValueChanged(object sender, EventArgs e)
+        private void fresa_ValueChanged(object sender, EventArgs e)
         {
             decimal precio = 45;
             labfresa.Text = (precio * fresa.Value).ToString("C");
-        
         }
-         private void te_ValueChanged(object sender, EventArgs e)
+        private void te_ValueChanged(object sender, EventArgs e)
         {
             decimal precio = 50;
             labte.Text = (precio * te.Value).ToString("C");
-        
         }
 
-        
         private void btnVolveralMenuN_Click(object sender, EventArgs e)
         {
             formCliente formClientes = new formCliente();
@@ -59,81 +51,65 @@ namespace Restaurante
 
         private void btnTotalN_Click(object sender, EventArgs e)
         {
-            if(cacao.Value > 0)
+            decimal subtotal = 0;
+
+            if (cacao.Value > 0)
             {
-                pedido.Items.add(new ItemPedido 
+                pedido.Items.Add(new ItemPedido
                 {
                     Nombre = "Cacao",
-                    Categoria = "Bebida",
+                    Categoria = "Bebida Natural",
                     Precio = 50m,
                     Cantidad = (int)cacao.Value
-
                 });
-
-
+                subtotal += 50m * cacao.Value;
             }
 
-            if(limonada.Value > 0)
+            if (limonada.Value > 0)
             {
-                pedido.Items.add(new ItemPedido 
+                pedido.Items.Add(new ItemPedido
                 {
                     Nombre = "Limonada",
-                    Categoria = "Bebida",
+                    Categoria = "Bebida Natural",
                     Precio = 35m,
                     Cantidad = (int)limonada.Value
-
                 });
-
-
+                subtotal += 35m * limonada.Value;
             }
 
-            if(fresa.Value > 0)
+            if (fresa.Value > 0)
             {
-                pedido.Items.add(new ItemPedido 
+                pedido.Items.Add(new ItemPedido
                 {
                     Nombre = "Fresa",
-                    Categoria = "Bebida",
+                    Categoria = "Bebida Natural",
                     Precio = 45m,
                     Cantidad = (int)fresa.Value
-
                 });
-
-
+                subtotal += 45m * fresa.Value;
             }
 
-            if(te.Value > 0)
+            if (te.Value > 0)
             {
-                pedido.Items.add(new ItemPedido 
+                pedido.Items.Add(new ItemPedido
                 {
-                    Nombre = "Te Elado",
-                    Categoria = "Bebida",
-                    Precio = 45m,
+                    Nombre = "Te Helado",
+                    Categoria = "Bebida Natural",
+                    Precio = 50m,
                     Cantidad = (int)te.Value
-
                 });
-
-
+                subtotal += 50m * te.Value;
             }
 
-            labatotsl.Text =(cacao_Value + limonada.Value + fresa.Value  );
-           
-            MessageBox.Show("Bebidas agregadas al pedido ");
-            
+            if (subtotal > 0)
+            {
+                MessageBox.Show("Bebidas agregadas al pedido. Subtotal: " + subtotal.ToString("C"));
+            }
 
-            toña.Value = 0;
-            victoria.Value = 0;
-            corona.Value = 0;
-
-            
-                
-
-
-
-
-
+            cacao.Value = 0;
+            limonada.Value = 0;
+            fresa.Value = 0;
+            te.Value = 0;
         }
-
-       
-       
     }
 }

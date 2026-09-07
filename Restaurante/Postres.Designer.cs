@@ -40,6 +40,8 @@
             this.labpastel = new System.Windows.Forms.Label();
             this.labpanquei = new System.Windows.Forms.Label();
             this.labarrozLeche = new System.Windows.Forms.Label();
+            this.btnVolverP = new System.Windows.Forms.Button();
+            this.btnTotalP = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pastel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panquei)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrozLeche)).BeginInit();
@@ -147,12 +149,34 @@
             this.labarrozLeche.TabIndex = 12;
             this.labarrozLeche.Text = "C$0.00";
             // 
+            // btnVolverP
+            // 
+            this.btnVolverP.Location = new System.Drawing.Point(287, 580);
+            this.btnVolverP.Name = "btnVolverP";
+            this.btnVolverP.Size = new System.Drawing.Size(192, 76);
+            this.btnVolverP.TabIndex = 20;
+            this.btnVolverP.Text = "Volver al Menu";
+            this.btnVolverP.UseVisualStyleBackColor = true;
+            this.btnVolverP.Click += new System.EventHandler(this.btnVolverP_Click);
+            // 
+            // btnTotalP
+            // 
+            this.btnTotalP.Location = new System.Drawing.Point(527, 580);
+            this.btnTotalP.Name = "btnTotalP";
+            this.btnTotalP.Size = new System.Drawing.Size(192, 76);
+            this.btnTotalP.TabIndex = 21;
+            this.btnTotalP.Text = "Total";
+            this.btnTotalP.UseVisualStyleBackColor = true;
+            this.btnTotalP.Click += new System.EventHandler(this.btnTotalP_Click);
+            // 
             // Postres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 38F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(985, 796);
+            this.Controls.Add(this.btnTotalP);
+            this.Controls.Add(this.btnVolverP);
             this.Controls.Add(this.labarrozLeche);
             this.Controls.Add(this.labpanquei);
             this.Controls.Add(this.labpastel);
@@ -192,5 +216,7 @@
         private System.Windows.Forms.Label labpastel;
         private System.Windows.Forms.Label labpanquei;
         private System.Windows.Forms.Label labarrozLeche;
+        private System.Windows.Forms.Button btnVolverP;
+        private System.Windows.Forms.Button btnTotalP;
     }
 }

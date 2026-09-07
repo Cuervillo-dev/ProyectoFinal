@@ -50,5 +50,12 @@ namespace Restaurante
             postre.Show();
             this.Hide();
         }
+
+        private void verPedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResumenPedido resumen = new ResumenPedido();
+            resumen.Show();
+            this.Hide();
+        }
     }
 }

@@ -34,6 +34,7 @@
             this.bebidasAlcoholicasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.extrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +48,8 @@
             this.bebidaNaturalesToolStripMenuItem,
             this.bebidasAlcoholicasToolStripMenuItem,
             this.pToolStripMenuItem,
-            this.extrasToolStripMenuItem});
+            this.extrasToolStripMenuItem,
+            this.verPedidoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 3, 0, 3);
@@ -94,6 +96,14 @@
             this.extrasToolStripMenuItem.Size = new System.Drawing.Size(65, 30);
             this.extrasToolStripMenuItem.Text = "Extras";
             // 
+            // verPedidoToolStripMenuItem
+            // 
+            this.verPedidoToolStripMenuItem.Font = new System.Drawing.Font("Niagara Solid", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.verPedidoToolStripMenuItem.Name = "verPedidoToolStripMenuItem";
+            this.verPedidoToolStripMenuItem.Size = new System.Drawing.Size(100, 30);
+            this.verPedidoToolStripMenuItem.Text = "Ver Pedido";
+            this.verPedidoToolStripMenuItem.Click += new System.EventHandler(this.verPedidoToolStripMenuItem_Click);
+            // 
             // formCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 26F);
@@ -120,5 +130,6 @@
         private System.Windows.Forms.ToolStripMenuItem bebidasAlcoholicasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem extrasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verPedidoToolStripMenuItem;
     }
 }

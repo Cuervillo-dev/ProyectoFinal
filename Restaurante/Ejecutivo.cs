@@ -76,7 +76,50 @@ namespace Restaurante
 
         private void btnTotalE_Click(object sender, EventArgs e)
         {
+            decimal subtotal = 0;
 
+            if (alitapicante.Value > 0)
+            {
+                pedido.Items.Add(new ItemPedido { Nombre = "Alitas Picantes", Categoria = "Ejecutivo", Precio = 200m, Cantidad = (int)alitapicante.Value });
+                subtotal += 200m * alitapicante.Value;
+            }
+            if (alitaPeque.Value > 0)
+            {
+                pedido.Items.Add(new ItemPedido { Nombre = "Alitas Pequeñas", Categoria = "Ejecutivo", Precio = 150m, Cantidad = (int)alitaPeque.Value });
+                subtotal += 150m * alitaPeque.Value;
+            }
+            if (alitaGrande.Value > 0)
+            {
+                pedido.Items.Add(new ItemPedido { Nombre = "Alitas Grandes", Categoria = "Ejecutivo", Precio = 180m, Cantidad = (int)alitaGrande.Value });
+                subtotal += 180m * alitaGrande.Value;
+            }
+            if (alitaPapasFritas.Value > 0)
+            {
+                pedido.Items.Add(new ItemPedido { Nombre = "Alitas con Papas Fritas", Categoria = "Ejecutivo", Precio = 160m, Cantidad = (int)alitaPapasFritas.Value });
+                subtotal += 160m * alitaPapasFritas.Value;
+            }
+            if (alitasArroz.Value > 0)
+            {
+                pedido.Items.Add(new ItemPedido { Nombre = "Alitas con Arroz", Categoria = "Ejecutivo", Precio = 130m, Cantidad = (int)alitasArroz.Value });
+                subtotal += 130m * alitasArroz.Value;
+            }
+            if (alitaPapaAsada.Value > 0)
+            {
+                pedido.Items.Add(new ItemPedido { Nombre = "Alitas con Papa Asada", Categoria = "Ejecutivo", Precio = 150m, Cantidad = (int)alitaPapaAsada.Value });
+                subtotal += 150m * alitaPapaAsada.Value;
+            }
+
+            if (subtotal > 0)
+            {
+                MessageBox.Show("Platos agregados al pedido. Subtotal: " + subtotal.ToString("C"));
+            }
+
+            alitapicante.Value = 0;
+            alitaPeque.Value = 0;
+            alitaGrande.Value = 0;
+            alitaPapasFritas.Value = 0;
+            alitasArroz.Value = 0;
+            alitaPapaAsada.Value = 0;
         }
     }
 }

@@ -83,6 +83,12 @@
       <DependentUpon>Postres.cs</DependentUpon>
     </Compile>
     <Compile Include="pedido.cs" />
+    <Compile Include="ResumenPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResumenPedido.Designer.cs">
+      <DependentUpon>ResumenPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BebidasAlcoholicas.resx">
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Postres.resx">
       <DependentUpon>Postres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResumenPedido.resx">
+      <DependentUpon>ResumenPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

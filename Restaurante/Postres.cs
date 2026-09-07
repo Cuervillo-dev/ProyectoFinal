@@ -1,10 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,51 +15,63 @@ namespace Restaurante
         public Postres()
         {
             InitializeComponent();
-            createBotonManual();
             pastel.ValueChanged += pastel_ValueChanged;
             panquei.ValueChanged += panquei_ValueChanged;
             arrozLeche.ValueChanged += arrozLeche_ValueChanged;
         }
 
-        public void createBotonManual (object sender, EventArgs e)
+        private void btnVolverP_Click(object sender, EventArgs e)
         {
-            btnVolverP = new Button();
-            btnVolverP.Name = "btnVolverP";
-            btnVolverP.Text = "Volver Al Menu";
-            btnVolverP.Size = new System.Drawing.Size(120, 40);
-            btnVolverP.Location = new System.Drawing.Point(50, 200); // Coordenadas (X, Y)
-
-            
-            btnvolverP.Click += new System.EventHandler(this.btnVolverP_Click);
-
-           
-            this.Controls.Add(btnVolverP);
-            
+            formCliente formClientes = new formCliente();
+            formClientes.Show();
+            this.Hide();
         }
 
-        private void btnvolverP (object sender, EventArgs e)
-        {
-            navegacion.menuPrincipal(this);
-             .Close(); 
-            
-        }
-
-        private void pastel_ValueChanged (object sender, EventArgs e)
+        private void pastel_ValueChanged(object sender, EventArgs e)
         {
             decimal precio = 80m;
-            labpastel.Text = (precio * pastel_Value).Tostring ("c");
+            labpastel.Text = (precio * pastel.Value).ToString("C");
         }
 
-          private void panquei_ValueChanged (object sender, EventArgs e)
+        private void panquei_ValueChanged(object sender, EventArgs e)
         {
             decimal precio = 55m;
-            labpanquei.Text = (precio * panquei_Value).Tostring ("c");
+            labpanquei.Text = (precio * panquei.Value).ToString("C");
         }
-          private void arrozLeche_ValueChanged (object sender, EventArgs e)
+        private void arrozLeche_ValueChanged(object sender, EventArgs e)
         {
             decimal precio = 30m;
-            labarrozLeche.Text = (precio * arrozLeche_Value).Tostring ("c");
+            labarrozLeche.Text = (precio * arrozLeche.Value).ToString("C");
         }
 
+        private void btnTotalP_Click(object sender, EventArgs e)
+        {
+            decimal subtotal = 0;
+
+            if (pastel.Value > 0)
+            {
+                pedido.Items.Add(new ItemPedido { Nombre = "Pastel", Categoria = "Postre", Precio = 80m, Cantidad = (int)pastel.Value });
+                subtotal += 80m * pastel.Value;
+            }
+            if (panquei.Value > 0)
+            {
+                pedido.Items.Add(new ItemPedido { Nombre = "Panque", Categoria = "Postre", Precio = 55m, Cantidad = (int)panquei.Value });
+                subtotal += 55m * panquei.Value;
+            }
+            if (arrozLeche.Value > 0)
+            {
+                pedido.Items.Add(new ItemPedido { Nombre = "Arroz con Leche", Categoria = "Postre", Precio = 30m, Cantidad = (int)arrozLeche.Value });
+                subtotal += 30m * arrozLeche.Value;
+            }
+
+            if (subtotal > 0)
+            {
+                MessageBox.Show("Postres agregados al pedido. Subtotal: " + subtotal.ToString("C"));
+            }
+
+            pastel.Value = 0;
+            panquei.Value = 0;
+            arrozLeche.Value = 0;
+        }
     }
 }
