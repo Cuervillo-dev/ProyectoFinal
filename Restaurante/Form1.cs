@@ -15,7 +15,7 @@ namespace Restaurante
         public Form1()
         {
             InitializeComponent();
-            btoCliente.BackColor = ColorTranslator.FromHtml("#00CED1");
+            
         }
 
         private void btoCliente_Click(object sender, EventArgs e)

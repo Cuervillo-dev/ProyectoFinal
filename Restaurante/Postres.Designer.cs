@@ -42,68 +42,96 @@
             this.labarrozLeche = new System.Windows.Forms.Label();
             this.btnVolverP = new System.Windows.Forms.Button();
             this.btnTotalP = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pastel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panquei)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrozLeche)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 84);
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.ForeColor = System.Drawing.Color.Peru;
+            this.label1.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_20_30_PM;
+            this.label1.Location = new System.Drawing.Point(16, 346);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 38);
+            this.label1.Size = new System.Drawing.Size(71, 40);
             this.label1.TabIndex = 0;
             this.label1.Text = "Pastel";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 243);
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2.ForeColor = System.Drawing.Color.Peru;
+            this.label2.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_20_30_PM;
+            this.label2.Location = new System.Drawing.Point(16, 441);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 38);
+            this.label2.Size = new System.Drawing.Size(84, 40);
             this.label2.TabIndex = 1;
             this.label2.Text = "Panquei";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 408);
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label3.ForeColor = System.Drawing.Color.Peru;
+            this.label3.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_09_07_PM;
+            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Location = new System.Drawing.Point(12, 535);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(140, 38);
+            this.label3.Size = new System.Drawing.Size(142, 40);
             this.label3.TabIndex = 2;
             this.label3.Text = "Arroz de leche";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(287, 84);
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label4.ForeColor = System.Drawing.Color.Peru;
+            this.label4.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_09_07_PM;
+            this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Location = new System.Drawing.Point(310, 346);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 38);
+            this.label4.Size = new System.Drawing.Size(65, 40);
             this.label4.TabIndex = 3;
             this.label4.Text = "C$ 80";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(287, 218);
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label5.ForeColor = System.Drawing.Color.Peru;
+            this.label5.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_09_07_PM;
+            this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label5.Location = new System.Drawing.Point(310, 441);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 38);
+            this.label5.Size = new System.Drawing.Size(64, 40);
             this.label5.TabIndex = 4;
             this.label5.Text = "C$ 55";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(287, 408);
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label6.ForeColor = System.Drawing.Color.Peru;
+            this.label6.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_09_07_PM;
+            this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label6.Location = new System.Drawing.Point(311, 535);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 38);
+            this.label6.Size = new System.Drawing.Size(64, 40);
             this.label6.TabIndex = 5;
             this.label6.Text = "C$ 30";
             // 
             // pastel
             // 
-            this.pastel.Location = new System.Drawing.Point(527, 84);
+            this.pastel.BackColor = System.Drawing.Color.Black;
+            this.pastel.ForeColor = System.Drawing.Color.Peru;
+            this.pastel.Location = new System.Drawing.Point(562, 354);
             this.pastel.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
             this.pastel.Name = "pastel";
             this.pastel.Size = new System.Drawing.Size(52, 46);
@@ -111,7 +139,9 @@
             // 
             // panquei
             // 
-            this.panquei.Location = new System.Drawing.Point(527, 213);
+            this.panquei.BackColor = System.Drawing.SystemColors.ControlText;
+            this.panquei.ForeColor = System.Drawing.Color.Peru;
+            this.panquei.Location = new System.Drawing.Point(562, 441);
             this.panquei.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
             this.panquei.Name = "panquei";
             this.panquei.Size = new System.Drawing.Size(52, 46);
@@ -119,7 +149,9 @@
             // 
             // arrozLeche
             // 
-            this.arrozLeche.Location = new System.Drawing.Point(527, 395);
+            this.arrozLeche.BackColor = System.Drawing.SystemColors.InfoText;
+            this.arrozLeche.ForeColor = System.Drawing.Color.Peru;
+            this.arrozLeche.Location = new System.Drawing.Point(562, 535);
             this.arrozLeche.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
             this.arrozLeche.Name = "arrozLeche";
             this.arrozLeche.Size = new System.Drawing.Size(52, 46);
@@ -127,33 +159,49 @@
             // 
             // labpastel
             // 
-            this.labpastel.Location = new System.Drawing.Point(751, 97);
+            this.labpastel.BackColor = System.Drawing.Color.Transparent;
+            this.labpastel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labpastel.ForeColor = System.Drawing.Color.Peru;
+            this.labpastel.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_09_07_PM;
+            this.labpastel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labpastel.Location = new System.Drawing.Point(778, 356);
             this.labpastel.Name = "labpastel";
-            this.labpastel.Size = new System.Drawing.Size(62, 38);
+            this.labpastel.Size = new System.Drawing.Size(77, 38);
             this.labpastel.TabIndex = 10;
             this.labpastel.Text = "C$0.00";
             // 
             // labpanquei
             // 
-            this.labpanquei.Location = new System.Drawing.Point(751, 218);
+            this.labpanquei.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labpanquei.ForeColor = System.Drawing.Color.Peru;
+            this.labpanquei.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_09_07_PM;
+            this.labpanquei.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labpanquei.Location = new System.Drawing.Point(778, 457);
             this.labpanquei.Name = "labpanquei";
-            this.labpanquei.Size = new System.Drawing.Size(62, 61);
+            this.labpanquei.Size = new System.Drawing.Size(77, 39);
             this.labpanquei.TabIndex = 11;
             this.labpanquei.Text = "C$0.00";
             // 
             // labarrozLeche
             // 
-            this.labarrozLeche.Location = new System.Drawing.Point(751, 395);
+            this.labarrozLeche.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labarrozLeche.ForeColor = System.Drawing.Color.Peru;
+            this.labarrozLeche.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_09_07_PM;
+            this.labarrozLeche.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labarrozLeche.Location = new System.Drawing.Point(790, 549);
             this.labarrozLeche.Name = "labarrozLeche";
-            this.labarrozLeche.Size = new System.Drawing.Size(100, 53);
+            this.labarrozLeche.Size = new System.Drawing.Size(75, 40);
             this.labarrozLeche.TabIndex = 12;
             this.labarrozLeche.Text = "C$0.00";
             // 
             // btnVolverP
             // 
-            this.btnVolverP.Location = new System.Drawing.Point(287, 580);
+            this.btnVolverP.ForeColor = System.Drawing.Color.AliceBlue;
+            this.btnVolverP.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_20_30_PM;
+            this.btnVolverP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVolverP.Location = new System.Drawing.Point(322, 596);
             this.btnVolverP.Name = "btnVolverP";
-            this.btnVolverP.Size = new System.Drawing.Size(192, 76);
+            this.btnVolverP.Size = new System.Drawing.Size(489, 76);
             this.btnVolverP.TabIndex = 20;
             this.btnVolverP.Text = "Volver al Menu";
             this.btnVolverP.UseVisualStyleBackColor = true;
@@ -161,22 +209,44 @@
             // 
             // btnTotalP
             // 
-            this.btnTotalP.Location = new System.Drawing.Point(527, 580);
+            this.btnTotalP.ForeColor = System.Drawing.Color.AliceBlue;
+            this.btnTotalP.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_09_07_PM;
+            this.btnTotalP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTotalP.Location = new System.Drawing.Point(989, 307);
             this.btnTotalP.Name = "btnTotalP";
-            this.btnTotalP.Size = new System.Drawing.Size(192, 76);
+            this.btnTotalP.Size = new System.Drawing.Size(142, 258);
             this.btnTotalP.TabIndex = 21;
-            this.btnTotalP.Text = "Total";
+            this.btnTotalP.Text = "Agregar al Pedido";
             this.btnTotalP.UseVisualStyleBackColor = true;
             this.btnTotalP.Click += new System.EventHandler(this.btnTotalP_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_20_30_PM;
+            this.pictureBox1.Location = new System.Drawing.Point(-147, -48);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1295, 638);
+            this.pictureBox1.TabIndex = 22;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_201;
+            this.pictureBox2.Location = new System.Drawing.Point(-19, 592);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(1167, 192);
+            this.pictureBox2.TabIndex = 23;
+            this.pictureBox2.TabStop = false;
             // 
             // Postres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 38F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(985, 796);
-            this.Controls.Add(this.btnTotalP);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1143, 796);
             this.Controls.Add(this.btnVolverP);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.btnTotalP);
             this.Controls.Add(this.labarrozLeche);
             this.Controls.Add(this.labpanquei);
             this.Controls.Add(this.labpastel);
@@ -189,6 +259,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Niagara Solid", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Blue;
             this.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
@@ -197,6 +268,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pastel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panquei)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrozLeche)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,5 +291,7 @@
         private System.Windows.Forms.Label labarrozLeche;
         private System.Windows.Forms.Button btnVolverP;
         private System.Windows.Forms.Button btnTotalP;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

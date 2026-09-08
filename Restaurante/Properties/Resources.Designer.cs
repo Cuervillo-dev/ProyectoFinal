@@ -63,9 +63,29 @@ namespace Restaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap c639717b_6d85_4955_b8d1_b3fe0ae7a044 {
+            get {
+                object obj = ResourceManager.GetObject("c639717b-6d85-4955-b8d1-b3fe0ae7a044", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Captura_de_pantalla_2026_09_02_173953 {
             get {
                 object obj = ResourceManager.GetObject("Captura de pantalla 2026-09-02 173953", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hola2136fee4_e88a_4511_b838_601787632641 {
+            get {
+                object obj = ResourceManager.GetObject("hola2136fee4-e88a-4511-b838-601787632641", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -96,6 +116,16 @@ namespace Restaurante.Properties {
         internal static System.Drawing.Bitmap WhatsApp_Image_2026_09_02_at_9_201 {
             get {
                 object obj = ResourceManager.GetObject("WhatsApp Image 2026-09-02 at 9.201", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2026_09_02_at_9_202 {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2026-09-02 at 9.202", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

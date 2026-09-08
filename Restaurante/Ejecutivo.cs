@@ -121,5 +121,10 @@ namespace Restaurante
             alitasArroz.Value = 0;
             alitaPapaAsada.Value = 0;
         }
+
+        private void alitaGrande_ValueChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

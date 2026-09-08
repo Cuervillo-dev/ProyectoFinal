@@ -82,11 +82,9 @@ namespace Restaurante
                 subtotal += 80m * corona.Value;
             }
 
-            labTotal.Text = "Total a Pagar " + subtotal.ToString("C");
-
             if (subtotal > 0)
             {
-                MessageBox.Show("Bebidas agregadas al pedido");
+                MessageBox.Show("Bebidas agregadas al  pedido " + subtotal.ToString("C"));
             }
 
             // Resetear los numeric para evitar que se agregue dos veces si presiona otra vez

@@ -111,5 +111,10 @@ namespace Restaurante
             fresa.Value = 0;
             te.Value = 0;
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

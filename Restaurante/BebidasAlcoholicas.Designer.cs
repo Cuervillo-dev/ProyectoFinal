@@ -32,6 +32,8 @@
             this.victoria = new System.Windows.Forms.NumericUpDown();
             this.corona = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnCalcularTotal = new System.Windows.Forms.Button();
+            this.btnVolveralMenu = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -47,9 +49,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnVolveralMenu = new System.Windows.Forms.Button();
-            this.btnCalcularTotal = new System.Windows.Forms.Button();
-            this.labTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.toña)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.victoria)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.corona)).BeginInit();
@@ -97,6 +96,35 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(0, 38);
             this.label9.TabIndex = 11;
+            // 
+            // btnCalcularTotal
+            // 
+            this.btnCalcularTotal.Font = new System.Drawing.Font("Niagara Solid", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalcularTotal.ForeColor = System.Drawing.Color.SeaShell;
+            this.btnCalcularTotal.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_09_07_PM;
+            this.btnCalcularTotal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCalcularTotal.Location = new System.Drawing.Point(729, 504);
+            this.btnCalcularTotal.Name = "btnCalcularTotal";
+            this.btnCalcularTotal.Size = new System.Drawing.Size(246, 57);
+            this.btnCalcularTotal.TabIndex = 22;
+            this.btnCalcularTotal.Text = "Agregar al Pedido";
+            this.btnCalcularTotal.UseVisualStyleBackColor = true;
+            this.btnCalcularTotal.Click += new System.EventHandler(this.btnCalcularTotal_Click);
+            // 
+            // btnVolveralMenu
+            // 
+            this.btnVolveralMenu.BackColor = System.Drawing.Color.Snow;
+            this.btnVolveralMenu.Font = new System.Drawing.Font("Niagara Solid", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolveralMenu.ForeColor = System.Drawing.Color.Linen;
+            this.btnVolveralMenu.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_09_07_PM;
+            this.btnVolveralMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVolveralMenu.Location = new System.Drawing.Point(0, 506);
+            this.btnVolveralMenu.Name = "btnVolveralMenu";
+            this.btnVolveralMenu.Size = new System.Drawing.Size(246, 63);
+            this.btnVolveralMenu.TabIndex = 21;
+            this.btnVolveralMenu.Text = "Volver al Menu";
+            this.btnVolveralMenu.UseVisualStyleBackColor = false;
+            this.btnVolveralMenu.Click += new System.EventHandler(this.btnVolveralMenu_Click);
             // 
             // pictureBox2
             // 
@@ -271,47 +299,6 @@
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
             // 
-            // btnVolveralMenu
-            // 
-            this.btnVolveralMenu.BackColor = System.Drawing.Color.Snow;
-            this.btnVolveralMenu.Font = new System.Drawing.Font("Niagara Solid", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolveralMenu.ForeColor = System.Drawing.Color.Linen;
-            this.btnVolveralMenu.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_09_07_PM;
-            this.btnVolveralMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVolveralMenu.Location = new System.Drawing.Point(0, 608);
-            this.btnVolveralMenu.Name = "btnVolveralMenu";
-            this.btnVolveralMenu.Size = new System.Drawing.Size(246, 63);
-            this.btnVolveralMenu.TabIndex = 21;
-            this.btnVolveralMenu.Text = "Volver al Menu";
-            this.btnVolveralMenu.UseVisualStyleBackColor = false;
-            this.btnVolveralMenu.Click += new System.EventHandler(this.btnVolveralMenu_Click);
-            // 
-            // btnCalcularTotal
-            // 
-            this.btnCalcularTotal.Font = new System.Drawing.Font("Niagara Solid", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalcularTotal.ForeColor = System.Drawing.Color.SeaShell;
-            this.btnCalcularTotal.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_09_07_PM;
-            this.btnCalcularTotal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCalcularTotal.Location = new System.Drawing.Point(0, 524);
-            this.btnCalcularTotal.Name = "btnCalcularTotal";
-            this.btnCalcularTotal.Size = new System.Drawing.Size(246, 57);
-            this.btnCalcularTotal.TabIndex = 22;
-            this.btnCalcularTotal.Text = "Total";
-            this.btnCalcularTotal.UseVisualStyleBackColor = true;
-            this.btnCalcularTotal.Click += new System.EventHandler(this.btnCalcularTotal_Click);
-            // 
-            // labTotal
-            // 
-            this.labTotal.AutoSize = true;
-            this.labTotal.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.labTotal.Image = global::Restaurante.Properties.Resources.WhatsApp_Image_2026_09_02_at_9_09_07_PM;
-            this.labTotal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labTotal.Location = new System.Drawing.Point(779, 591);
-            this.labTotal.Name = "labTotal";
-            this.labTotal.Size = new System.Drawing.Size(135, 38);
-            this.labTotal.TabIndex = 23;
-            this.labTotal.Text = "Total a Pagar ";
-            // 
             // BebidasAlcoholicas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 38F);
@@ -319,7 +306,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 1050);
-            this.Controls.Add(this.labTotal);
             this.Controls.Add(this.btnCalcularTotal);
             this.Controls.Add(this.btnVolveralMenu);
             this.Controls.Add(this.pictureBox2);
@@ -379,6 +365,5 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnVolveralMenu;
         private System.Windows.Forms.Button btnCalcularTotal;
-        private System.Windows.Forms.Label labTotal;
     }
 }
