@@ -95,8 +95,8 @@ namespace Restaurante
             }
             if (alitaPapasFritas.Value > 0)
             {
-                pedido.Items.Add(new ItemPedido { Nombre = "Alitas con Papas Fritas", Categoria = "Ejecutivo", Precio = 160m, Cantidad = (int)alitaPapasFritas.Value });
-                subtotal += 160m * alitaPapasFritas.Value;
+                pedido.Items.Add(new ItemPedido { Nombre = "Alitas con Papas Fritas", Categoria = "Ejecutivo", Precio = 200m, Cantidad = (int)alitaPapasFritas.Value });
+                subtotal += 200m * alitaPapasFritas.Value;
             }
             if (alitasArroz.Value > 0)
             {
