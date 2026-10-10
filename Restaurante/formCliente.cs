@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Restaurante
@@ -15,47 +8,36 @@ namespace Restaurante
         public formCliente()
         {
             InitializeComponent();
+            Text = pedido.NumeroMesa > 0 ? "Food Zone - Mesa " + pedido.NumeroMesa : "Food Zone";
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void ejecutivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Ejecutivo ejecutivo = new Ejecutivo();
-            ejecutivo.Show();
-            this.Hide();
+            Navegacion.IrA(this, new Ejecutivo());
         }
 
         private void bebidaNaturalesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BebidasNaturales natural = new BebidasNaturales();
-            natural.Show();
-            this.Hide();
+            Navegacion.IrA(this, new BebidasNaturales());
         }
 
         private void bebidasAlcoholicasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            BebidasAlcoholicas alcoholicas = new BebidasAlcoholicas();
-            alcoholicas.Show();
-            this.Hide();
+            Navegacion.IrA(this, new BebidasAlcoholicas());
         }
 
         private void pToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Postres postre = new Postres();
-            postre.Show();
-            this.Hide();
+            Navegacion.IrA(this, new Postres());
         }
 
         private void verPedidoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ResumenPedido resumen = new ResumenPedido();
-            resumen.Show();
-            this.Hide();
+            Navegacion.IrA(this, new ResumenPedido());
         }
     }
 }

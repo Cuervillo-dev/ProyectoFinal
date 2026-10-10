@@ -1,19 +1,29 @@
-﻿using MySql.Data.MySqlClient;
-using System;
-using System.Data.SqlClient;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Restaurante.Modelo;
+using Restaurante.Negocio;
 
 namespace Restaurante
 {
     // Pantalla de inicio de la app Cliente: muestra las mesas y deja elegir una LIBRE.
+    // Concurrencia: la lectura de mesas corre en una tarea de fondo (Task) que se repite
+    // cada 10 s y se puede cancelar (CancellationToken). La ventana nunca se congela.
     public class FormInicio : Form
     {
         private readonly FlowLayoutPanel panelMesas = new FlowLayoutPanel();
         private readonly Label lblTitulo = new Label();
         private readonly Label lblInfo = new Label();
         private readonly Button btnRefrescar = new Button();
-        private readonly Timer timerRefresco = new Timer();
+        private readonly ProgressBar barra = new ProgressBar();
+
+        private readonly MesaService _mesas = new MesaService();
+        private readonly CancellationTokenSource _cts = new CancellationTokenSource();
+        private readonly SemaphoreSlim _cargando = new SemaphoreSlim(1, 1); // evita dos cargas a la vez
+        private Task _monitor;
 
         public FormInicio()
         {
@@ -34,10 +44,16 @@ namespace Restaurante
             lblInfo.Height = 36;
             lblInfo.TextAlign = ContentAlignment.MiddleCenter;
 
+            barra.Style = ProgressBarStyle.Marquee;
+            barra.MarqueeAnimationSpeed = 30;
+            barra.Dock = DockStyle.Bottom;
+            barra.Height = 6;
+            barra.Visible = false;
+
             btnRefrescar.Text = "Refrescar";
             btnRefrescar.Dock = DockStyle.Bottom;
             btnRefrescar.Height = 40;
-            btnRefrescar.Click += (s, e) => CargarMesas();
+            btnRefrescar.Click += async (s, e) => await CargarMesasAsync();
 
             panelMesas.Dock = DockStyle.Fill;
             panelMesas.Padding = new Padding(20);
@@ -47,59 +63,68 @@ namespace Restaurante
             Controls.Add(panelMesas);
             Controls.Add(lblInfo);
             Controls.Add(lblTitulo);
+            Controls.Add(barra);
             Controls.Add(btnRefrescar);
 
-            // Refresco automático cada 10 s (otras mesas pueden ocuparse mientras tanto)
-            timerRefresco.Interval = 10000;
-            timerRefresco.Tick += (s, e) => CargarMesas();
-
-            Load += (s, e) => { CargarMesas(); timerRefresco.Start(); };
-            FormClosed += (s, e) => timerRefresco.Stop();
+            Load += (s, e) => { _monitor = MonitorearMesasAsync(_cts.Token); };
+            FormClosed += (s, e) => _cts.Cancel();   // detiene la tarea de fondo
         }
 
-        // TODO: reemplaza por tu clase de conexión existente.
-        // TiDB Cloud exige SSL: SslMode=Required (o VerifyCA con el certificado).
-        private MySqlConnection AbrirConexion()
-        {
-            string cs = "Server=TU_HOST;Port=4000;Database=proyectoDB;Uid=TU_USER;Pwd=TU_PASS;SslMode=Required;";
-            var con = new MySqlConnection(cs);
-            con.Open();
-            return con;
-        }
-
-        private void CargarMesas()
+        // Tarea de fondo: refresca las mesas cada 10 s (otras mesas pueden ocuparse o liberarse
+        // desde la app Mesero mientras tanto) hasta que se cancele.
+        private async Task MonitorearMesasAsync(CancellationToken ct)
         {
             try
             {
-                panelMesas.SuspendLayout();
-                panelMesas.Controls.Clear();
-
-                using (var con = AbrirConexion())
-                using (var cmd = new MySqlCommand(
-                    "SELECT idMesa, numeroMesa, estado FROM Mesas ORDER BY numeroMesa", con))
-                using (var rd = cmd.ExecuteReader())
+                while (!ct.IsCancellationRequested)
                 {
-                    while (rd.Read())
-                    {
-                        int idMesa = rd.GetInt32("idMesa");
-                        int numero = rd.GetInt32("numeroMesa");
-                        bool libre = rd.GetString("estado") == "LIBRE";
-                        panelMesas.Controls.Add(CrearTarjeta(idMesa, numero, libre));
-                    }
+                    await CargarMesasAsync();
+                    await Task.Delay(10000, ct);
                 }
             }
+            catch (OperationCanceledException) { }
+        }
+
+        private async Task CargarMesasAsync()
+        {
+            // Si ya hay una carga en curso, no lanzar otra
+            if (!await _cargando.WaitAsync(0)) return;
+            var ct = _cts.Token;
+            try
+            {
+                btnRefrescar.Enabled = false;
+                barra.Visible = true;
+
+                List<Mesa> mesas = await _mesas.ListarAsync(ct);   // BD en segundo plano
+                if (ct.IsCancellationRequested || IsDisposed) return;
+
+                panelMesas.SuspendLayout();
+                panelMesas.Controls.Clear();
+                foreach (var m in mesas)
+                    panelMesas.Controls.Add(CrearTarjeta(m));
+                panelMesas.ResumeLayout();
+
+                lblInfo.Text = "Selecciona tu mesa (las mesas en verde están disponibles)";
+            }
+            catch (OperationCanceledException) { }
             catch (Exception ex)
             {
-                lblInfo.Text = "No se pudo conectar: " + ex.Message;
+                if (!IsDisposed) lblInfo.Text = "No se pudo conectar: " + ex.Message;
             }
             finally
             {
-                panelMesas.ResumeLayout();
+                if (!IsDisposed)
+                {
+                    barra.Visible = false;
+                    btnRefrescar.Enabled = true;
+                }
+                _cargando.Release();
             }
         }
 
-        private Button CrearTarjeta(int idMesa, int numero, bool libre)
+        private Button CrearTarjeta(Mesa mesa)
         {
+            bool libre = mesa.Libre;
             var btn = new Button
             {
                 Width = 130,
@@ -109,46 +134,43 @@ namespace Restaurante
                 FlatStyle = FlatStyle.Flat,
                 ForeColor = Color.White,
                 BackColor = libre ? Color.FromArgb(46, 160, 67) : Color.FromArgb(190, 60, 60),
-                Text = "Mesa " + numero + "\n" + (libre ? "Disponible" : "Ocupada"),
+                Text = "Mesa " + mesa.Numero + "\n" + (libre ? "Disponible" : "Ocupada"),
                 Enabled = libre
             };
             btn.FlatAppearance.BorderSize = 0;
             if (libre)
-                btn.Click += (s, e) => ElegirMesa(idMesa, numero);
+                btn.Click += async (s, e) => await ElegirMesaAsync(mesa);
             return btn;
         }
 
-        private void ElegirMesa(int idMesa, int numero)
+        private async Task ElegirMesaAsync(Mesa mesa)
         {
+            panelMesas.Enabled = false;
+            barra.Visible = true;
             try
             {
-                // UPDATE condicional: si otro cliente la tomó justo antes, no afecta filas
-                using (var con = AbrirConexion())
-                using (var cmd = new MySqlCommand(
-                    "UPDATE Mesas SET estado = 'OCUPADA' WHERE idMesa = @id AND estado = 'LIBRE'", con))
+                // Espera a que termine una carga en curso para no pisarla
+                await _cargando.WaitAsync();
+                bool ok;
+                try { ok = await _mesas.ElegirMesaAsync(mesa, _cts.Token); }
+                finally { _cargando.Release(); }
+
+                if (!ok)
                 {
-                    cmd.Parameters.AddWithValue("@id", idMesa);
-                    if (cmd.ExecuteNonQuery() == 0)
-                    {
-                        MessageBox.Show("Esa mesa ya fue ocupada. Elige otra.", "Mesa no disponible");
-                        CargarMesas();
-                        return;
-                    }
+                    MessageBox.Show("Esa mesa ya fue ocupada. Elige otra.", "Mesa no disponible");
+                    panelMesas.Enabled = true;
+                    await CargarMesasAsync();
+                    return;
                 }
 
-                timerRefresco.Stop();
-                Hide();
-
-                
-   
-
-                var siguiente = new Form1();              
-                siguiente.FormClosed += (s, e) => Close(); 
-                siguiente.Show();
+                _cts.Cancel();   // ya no hace falta refrescar las mesas
+                Navegacion.IrA(this, new Form1());
             }
+            catch (OperationCanceledException) { }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al elegir la mesa: " + ex.Message);
+                if (!IsDisposed) { panelMesas.Enabled = true; barra.Visible = false; }
             }
         }
     }

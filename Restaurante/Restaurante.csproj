@@ -132,6 +132,18 @@
       <DependentUpon>Postres.cs</DependentUpon>
     </Compile>
     <Compile Include="pedido.cs" />
+    <Compile Include="Datos\Conexion.cs" />
+    <Compile Include="Datos\MesaDAO.cs" />
+    <Compile Include="Datos\PedidoDAO.cs" />
+    <Compile Include="Datos\ProductoDAO.cs" />
+    <Compile Include="Modelo\ItemPedido.cs" />
+    <Compile Include="Modelo\Mesa.cs" />
+    <Compile Include="Modelo\Producto.cs" />
+    <Compile Include="navegacion.cs" />
+    <Compile Include="Negocio\CatalogoService.cs" />
+    <Compile Include="Negocio\MesaService.cs" />
+    <Compile Include="Negocio\PedidoService.cs" />
+    <Compile Include="Presentacion\MenuController.cs" />
     <Compile Include="ResumenPedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +196,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="appsettings.local.config.example" />
+    <None Include="appsettings.local.config" Condition="Exists('appsettings.local.config')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Captura de pantalla 2026-09-02 173953.png" />

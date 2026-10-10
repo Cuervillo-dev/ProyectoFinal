@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Restaurante
@@ -16,7 +13,10 @@ namespace Restaurante
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormInicio());
+
+            // ApplicationContext permite cambiar el formulario principal al navegar.
+            Navegacion.Contexto = new ApplicationContext(new FormInicio());
+            Application.Run(Navegacion.Contexto);
         }
     }
 }
