@@ -15,7 +15,13 @@ namespace Restaurante
             Application.SetCompatibleTextRenderingDefault(false);
 
             // ApplicationContext permite cambiar el formulario principal al navegar.
-            Navegacion.Contexto = new ApplicationContext(new FormInicio());
+            var inicio = new FormInicio();
+            Navegacion.Contexto = new ApplicationContext(inicio);
+            Navegacion.Registrar(inicio);
+
+            // Vigila la mesa del cliente (reinicio al liberar) y sincroniza el menu cada 5 s.
+            Restaurante.Negocio.SesionMesa.Iniciar();
+
             Application.Run(Navegacion.Contexto);
         }
     }

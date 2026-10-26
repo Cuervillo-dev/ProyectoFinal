@@ -15,6 +15,7 @@ namespace Restaurante
         private readonly ProgressBar barra = new ProgressBar();
         private readonly Button btnCancelar = new Button();
         private readonly Button btnCuenta = new Button();
+        private readonly Button btnMesero = new Button();
         private readonly Label lblEstado = new Label();
 
         public ResumenPedido()
@@ -34,9 +35,16 @@ namespace Restaurante
             btnCuenta.Size = new System.Drawing.Size(160, 50);
             btnCuenta.Click += async (s, e) => await PedirCuentaAsync();
 
+            // Un poco mas alto para que quepa la segunda fila de botones.
+            ClientSize = new System.Drawing.Size(740, 600);
+            btnMesero.Text = "Llamar al Mesero";
+            btnMesero.Location = new System.Drawing.Point(30, 510);
+            btnMesero.Size = new System.Drawing.Size(160, 50);
+            btnMesero.Click += async (s, e) => await Acciones.LlamarMeseroAsync();
+
             barra.Style = ProgressBarStyle.Marquee;
             barra.MarqueeAnimationSpeed = 30;
-            barra.Location = new System.Drawing.Point(30, 512);
+            barra.Location = new System.Drawing.Point(30, 575);
             barra.Size = new System.Drawing.Size(560, 12);
             barra.Visible = false;
 
@@ -50,6 +58,7 @@ namespace Restaurante
             lblEstado.Location = new System.Drawing.Point(430, 405);
 
             Controls.Add(btnCuenta);
+            Controls.Add(btnMesero);
             Controls.Add(barra);
             Controls.Add(btnCancelar);
             Controls.Add(lblEstado);
@@ -62,10 +71,10 @@ namespace Restaurante
             foreach (var item in pedido.Items)
             {
                 decimal subtotal = item.Precio * item.Cantidad;
-                dgvPedido.Rows.Add(item.Nombre, item.Categoria, item.Precio.ToString("C"), item.Cantidad, subtotal.ToString("C"));
+                dgvPedido.Rows.Add(item.Nombre, item.Categoria, Moneda.Texto(item.Precio), item.Cantidad, Moneda.Texto(subtotal));
             }
 
-            labGranTotal.Text = "Total a Pagar: " + pedido.Total.ToString("C");
+            labGranTotal.Text = "Total a Pagar: " + Moneda.Texto(pedido.Total);
         }
 
         // Mientras se guarda: la ventana sigue viva, se muestra progreso y se puede cancelar.
@@ -93,7 +102,7 @@ namespace Restaurante
             try
             {
                 int idPedido = await _servicio.EnviarAsync(_cts.Token);
-                MessageBox.Show("Pedido enviado a cocina. Total: " + total.ToString("C") +
+                MessageBox.Show("Pedido enviado a cocina. Total: " + Moneda.Texto(total) +
                                 "\nPedido #" + idPedido, "Pedido confirmado");
                 Navegacion.VolverAlMenu(this);
             }
@@ -106,52 +115,19 @@ namespace Restaurante
                 if (!IsDisposed)
                 {
                     Ocupado(false, "");
+                    CargarPedido();   // el carrito pudo cambiar (productos quitados / precios nuevos)
                     MessageBox.Show("No se pudo enviar el pedido:\n" + ex.Message, "Error");
                 }
             }
         }
 
+        // La logica (confirmar, validar, marcar la cuenta y bloquear la mesa) esta en Acciones,
+        // para que el mismo boton funcione igual desde cualquier pantalla.
         private async System.Threading.Tasks.Task PedirCuentaAsync()
         {
-            if (MessageBox.Show("¿Deseas pedir la cuenta? El mesero la llevará a tu mesa.",
-                                "Pedir cuenta", MessageBoxButtons.YesNo) != DialogResult.Yes)
-                return;
-
-            if (pedido.Items.Any())
-            {
-                MessageBox.Show("Tienes productos sin enviar. Presiona primero \"Finalizar Pedido\".");
-                return;
-            }
-
-            _cts = new CancellationTokenSource();
-            Ocupado(true, "Solicitando cuenta...");
-            try
-            {
-                bool ok = await _servicio.PedirCuentaAsync(_cts.Token);
-                if (ok)
-                {
-                    MessageBox.Show("Cuenta solicitada. El mesero viene en camino.");
-                    pedido.Reiniciar();
-                    Navegacion.IrA(this, new FormInicio());   // listo para el siguiente cliente
-                }
-                else
-                {
-                    Ocupado(false, "");
-                    MessageBox.Show("No hay un pedido abierto en esta mesa (o la cuenta ya fue solicitada).");
-                }
-            }
-            catch (OperationCanceledException)
-            {
-                if (!IsDisposed) { Ocupado(false, "Solicitud cancelada."); }
-            }
-            catch (Exception ex)
-            {
-                if (!IsDisposed)
-                {
-                    Ocupado(false, "");
-                    MessageBox.Show("No se pudo solicitar la cuenta:\n" + ex.Message, "Error");
-                }
-            }
+            btnCuenta.Enabled = false;
+            try { await Acciones.PedirCuentaAsync(); }
+            finally { if (!IsDisposed) btnCuenta.Enabled = true; }
         }
 
         private void btnVolverResumen_Click(object sender, EventArgs e)

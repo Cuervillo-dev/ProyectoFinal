@@ -30,6 +30,17 @@ namespace Restaurante.Datos
                     int idPedido;
                     string estado = null;
 
+                    // 0) La mesa debe seguir ocupada: si el Mesero la libero mientras el cliente
+                    //    enviaba, no se crea un pedido huerfano en una mesa libre.
+                    using (var cmd = new MySqlCommand(
+                        "SELECT estado FROM Mesas WHERE idMesa = @mesa", con, tx))
+                    {
+                        cmd.Parameters.AddWithValue("@mesa", idMesa);
+                        object r = cmd.ExecuteScalar();
+                        if (r == null || Convert.ToString(r) != "OCUPADA")
+                            throw new InvalidOperationException("Esta mesa ya fue liberada por el mesero.");
+                    }
+
                     // 1) Buscar pedido abierto de la mesa (FOR UPDATE: bloquea la fila mientras dura la transaccion)
                     using (var cmd = new MySqlCommand(
                         "SELECT idPedido, estado FROM Pedidos " +

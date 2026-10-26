@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
@@ -27,6 +28,31 @@ namespace Restaurante.Datos
                 }
             }
             return lista;
+        }
+
+        // Estado actual de una mesa (LIBRE / OCUPADA); null si no existe.
+        public async Task<string> ObtenerEstadoAsync(int idMesa, CancellationToken ct)
+        {
+            using (var con = await Conexion.AbrirAsync(ct))
+            using (var cmd = new MySqlCommand("SELECT estado FROM Mesas WHERE idMesa = @id", con))
+            {
+                cmd.Parameters.AddWithValue("@id", idMesa);
+                object r = await cmd.ExecuteScalarAsync(ct);
+                return (r == null || r == DBNull.Value) ? null : Convert.ToString(r);
+            }
+        }
+
+        // El cliente llama al mesero: el Mesero ve la mesa en su caja de "Llamadas".
+        // Requiere la columna Mesas.llamaMesero (ver ALTER TABLE).
+        public async Task LlamarMeseroAsync(int idMesa, CancellationToken ct)
+        {
+            using (var con = await Conexion.AbrirAsync(ct))
+            using (var cmd = new MySqlCommand(
+                "UPDATE Mesas SET llamaMesero = 1 WHERE idMesa = @id", con))
+            {
+                cmd.Parameters.AddWithValue("@id", idMesa);
+                await cmd.ExecuteNonQueryAsync(ct);
+            }
         }
 
         // UPDATE condicional: si otro cliente la tomo justo antes, no afecta filas

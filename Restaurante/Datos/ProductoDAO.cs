@@ -13,7 +13,8 @@ namespace Restaurante.Datos
             var lista = new List<Producto>();
             using (var con = await Conexion.AbrirAsync(ct))
             using (var cmd = new MySqlCommand(
-                "SELECT idProducto, nombre, precio FROM Productos", con))
+                "SELECT idProducto, nombre, precio, categoria FROM Productos " +
+                "WHERE activo = 1 ORDER BY idProducto", con))
             using (var rd = await cmd.ExecuteReaderAsync(ct))
             {
                 while (await rd.ReadAsync(ct))
@@ -22,7 +23,8 @@ namespace Restaurante.Datos
                     {
                         IdProducto = rd.GetInt32(0),
                         Nombre = rd.GetString(1),
-                        Precio = rd.GetDecimal(2)
+                        Precio = rd.GetDecimal(2),
+                        Categoria = rd.IsDBNull(3) ? "Otros" : rd.GetString(3)
                     });
                 }
             }

@@ -92,24 +92,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BebidasAlcoholicas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BebidasAlcoholicas.Designer.cs">
-      <DependentUpon>BebidasAlcoholicas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BebidasNaturales.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BebidasNaturales.Designer.cs">
-      <DependentUpon>BebidasNaturales.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Ejecutivo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Ejecutivo.Designer.cs">
-      <DependentUpon>Ejecutivo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,11 +107,12 @@
     <Compile Include="FormInicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Postres.cs">
+    <Compile Include="Acciones.cs" />
+    <Compile Include="FormCuenta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Postres.Designer.cs">
-      <DependentUpon>Postres.cs</DependentUpon>
+    <Compile Include="MenuCategoria.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="pedido.cs" />
     <Compile Include="Datos\Conexion.cs" />
@@ -142,8 +125,9 @@
     <Compile Include="navegacion.cs" />
     <Compile Include="Negocio\CatalogoService.cs" />
     <Compile Include="Negocio\MesaService.cs" />
+    <Compile Include="Negocio\Moneda.cs" />
     <Compile Include="Negocio\PedidoService.cs" />
-    <Compile Include="Presentacion\MenuController.cs" />
+    <Compile Include="Negocio\SesionMesa.cs" />
     <Compile Include="ResumenPedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,23 +136,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="BebidasAlcoholicas.resx">
-      <DependentUpon>BebidasAlcoholicas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BebidasNaturales.resx">
-      <DependentUpon>BebidasNaturales.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Ejecutivo.resx">
-      <DependentUpon>Ejecutivo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formCliente.resx">
       <DependentUpon>formCliente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Postres.resx">
-      <DependentUpon>Postres.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResumenPedido.resx">
       <DependentUpon>ResumenPedido.cs</DependentUpon>

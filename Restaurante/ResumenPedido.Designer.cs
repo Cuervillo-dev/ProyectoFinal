@@ -28,98 +28,107 @@ namespace Restaurante
             this.btnVolverResumen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
-            //
+            // 
             // dgvPedido
-            //
+            // 
             this.dgvPedido.AllowUserToAddRows = false;
             this.dgvPedido.AllowUserToDeleteRows = false;
-            this.dgvPedido.ReadOnly = true;
+            this.dgvPedido.ColumnHeadersHeight = 29;
             this.dgvPedido.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNombre,
             this.colCategoria,
             this.colPrecio,
             this.colCantidad,
             this.colSubtotal});
-            this.dgvPedido.Location = new System.Drawing.Point(30, 30);
+            this.dgvPedido.Location = new System.Drawing.Point(30, 24);
+            this.dgvPedido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvPedido.Name = "dgvPedido";
+            this.dgvPedido.ReadOnly = true;
             this.dgvPedido.RowHeadersWidth = 30;
-            this.dgvPedido.Size = new System.Drawing.Size(680, 350);
+            this.dgvPedido.Size = new System.Drawing.Size(680, 280);
             this.dgvPedido.TabIndex = 0;
-            //
+            // 
             // colNombre
-            //
+            // 
             this.colNombre.HeaderText = "Producto";
+            this.colNombre.MinimumWidth = 6;
             this.colNombre.Name = "colNombre";
             this.colNombre.ReadOnly = true;
             this.colNombre.Width = 160;
-            //
+            // 
             // colCategoria
-            //
+            // 
             this.colCategoria.HeaderText = "Categoria";
+            this.colCategoria.MinimumWidth = 6;
             this.colCategoria.Name = "colCategoria";
             this.colCategoria.ReadOnly = true;
             this.colCategoria.Width = 140;
-            //
+            // 
             // colPrecio
-            //
+            // 
             this.colPrecio.HeaderText = "Precio";
+            this.colPrecio.MinimumWidth = 6;
             this.colPrecio.Name = "colPrecio";
             this.colPrecio.ReadOnly = true;
-            this.colPrecio.Width = 100;
-            //
+            // 
             // colCantidad
-            //
+            // 
             this.colCantidad.HeaderText = "Cantidad";
+            this.colCantidad.MinimumWidth = 6;
             this.colCantidad.Name = "colCantidad";
             this.colCantidad.ReadOnly = true;
             this.colCantidad.Width = 90;
-            //
+            // 
             // colSubtotal
-            //
+            // 
             this.colSubtotal.HeaderText = "Subtotal";
+            this.colSubtotal.MinimumWidth = 6;
             this.colSubtotal.Name = "colSubtotal";
             this.colSubtotal.ReadOnly = true;
             this.colSubtotal.Width = 110;
-            //
+            // 
             // labGranTotal
-            //
+            // 
             this.labGranTotal.AutoSize = true;
             this.labGranTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.labGranTotal.Location = new System.Drawing.Point(30, 400);
+            this.labGranTotal.Location = new System.Drawing.Point(30, 320);
             this.labGranTotal.Name = "labGranTotal";
-            this.labGranTotal.Size = new System.Drawing.Size(200, 30);
+            this.labGranTotal.Size = new System.Drawing.Size(177, 29);
             this.labGranTotal.TabIndex = 1;
             this.labGranTotal.Text = "Total a Pagar:";
-            //
+            // 
             // btnFinalizarPedido
-            //
-            this.btnFinalizarPedido.Location = new System.Drawing.Point(430, 450);
+            // 
+            this.btnFinalizarPedido.Location = new System.Drawing.Point(430, 360);
+            this.btnFinalizarPedido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFinalizarPedido.Name = "btnFinalizarPedido";
-            this.btnFinalizarPedido.Size = new System.Drawing.Size(160, 50);
+            this.btnFinalizarPedido.Size = new System.Drawing.Size(160, 40);
             this.btnFinalizarPedido.TabIndex = 2;
-            this.btnFinalizarPedido.Text = "Finalizar Pedido";
+            this.btnFinalizarPedido.Text = "Enviar Pedido";
             this.btnFinalizarPedido.UseVisualStyleBackColor = true;
             this.btnFinalizarPedido.Click += new System.EventHandler(this.btnFinalizarPedido_Click);
-            //
+            // 
             // btnVolverResumen
-            //
-            this.btnVolverResumen.Location = new System.Drawing.Point(230, 450);
+            // 
+            this.btnVolverResumen.Location = new System.Drawing.Point(230, 360);
+            this.btnVolverResumen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVolverResumen.Name = "btnVolverResumen";
-            this.btnVolverResumen.Size = new System.Drawing.Size(160, 50);
+            this.btnVolverResumen.Size = new System.Drawing.Size(160, 40);
             this.btnVolverResumen.TabIndex = 3;
             this.btnVolverResumen.Text = "Seguir Ordenando";
             this.btnVolverResumen.UseVisualStyleBackColor = true;
             this.btnVolverResumen.Click += new System.EventHandler(this.btnVolverResumen_Click);
-            //
+            // 
             // ResumenPedido
-            //
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 540);
+            this.ClientSize = new System.Drawing.Size(740, 432);
             this.Controls.Add(this.btnVolverResumen);
             this.Controls.Add(this.btnFinalizarPedido);
             this.Controls.Add(this.labGranTotal);
             this.Controls.Add(this.dgvPedido);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ResumenPedido";
             this.Text = "Resumen del Pedido";
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).EndInit();
